@@ -23,7 +23,6 @@ export const Register = () => {
                 console.log(data.token)
             })
             .catch(error => console.error(error))
-            
         e.target.reset() //Reset form
     }
     return (
