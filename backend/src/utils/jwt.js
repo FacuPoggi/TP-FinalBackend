@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken"
-//ACTUALMENTE EN DESUSO, NO APLICADO EL LOGUEO CON JWT SOLO SESSIONS
+//DESACTIVADO, NO SE USA PARA EL LOGIN JWT, SOLO SESSIONS
 export const generateToken = (user) => {
     /*
         1er: Objeto de asociacion del token

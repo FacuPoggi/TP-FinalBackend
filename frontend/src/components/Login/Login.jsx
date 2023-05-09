@@ -1,28 +1,39 @@
-import { useRef } from "react"
-export const Login = () => {
+import { useContext, useRef } from "react"
+import UserContext from "../../context/userContext"
 
+export const Login = () => {
+    const { updateUser } = useContext(UserContext);
     const datForm = useRef()
     const consultarForm = (e) => {
         //Consultar los datos del formulario
         e.preventDefault()
         const datosFormulario = new FormData(datForm.current) //Pasar de HTML a Objeto Iterable
         const cliente = Object.fromEntries(datosFormulario) //Pasar de objeto iterable a objeto simple
+        const login = async () => {
+            try {
+                const response = await fetch('http://localhost:4000/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(cliente)
+                });
+                const data = await response.json();
+                const userData = data.user;
+                updateUser(userData)
+                console.log(updateUser)
+                document.cookie = `loguedUser=${data.user.email};expires=${new Date(Date.now() + 1 * 24 * 60 * 60 * 1000).toUTCString()};path=/`;
+                console.log(document.cookie);
 
-        fetch('http://localhost:8080/auth/login', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(cliente)
-        })
-            .then(response => response.json())
-            .then(data => {
-                document.cookie = `token=${data.token};expires=${new Date(Date.now() + 1 * 24 * 60 * 60 * 1000).toUTCString()};path=/`
-                console.log(data.token)
-            })
-            .catch(error => console.error(error))
+            } catch (error) {
+                console.error(error);
+            }
 
-        e.target.reset() //Reset form
+            e.target.reset(); //Reset form
+        }
+        login();
+
+
     }
     return (
         <div className="container divForm" >

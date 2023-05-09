@@ -12,11 +12,18 @@ export const loginUser = async (req, res, next) => {
                 })
             }
             if (!user) {
-                return res.status(401).send("Correo electrónico o contraseña incorrecta")
+                return res.status(401).send({
+                    message:"Usuario o contraseña no validos",
+                    user: user
+                })
             }
             req.session.login = true;
             req.session.user = user;
-            return res.status(200).send(`Usuario Logueado exitosamente: ${req.session.user.first_name}, Rol: ${req.session.user.rol}`)
+            console.log(req.session)
+            return res.status(200).send({
+                meesage: "Login exitoso",
+                user: user
+            })
         })(req, res, next)
 
     } catch (error) {
@@ -27,7 +34,7 @@ export const loginUser = async (req, res, next) => {
     }
 
 }
-//JWT Por el profe, no uso jwt
+//JWT Por el profe, no implementado JWT
 // export const loginUser = async (req, res, next) => {
 //     try {
 //         passport.authenticate('jwt', { session: false }, async (err, user, info) => {
@@ -85,9 +92,15 @@ export const registerUser = async (req, res, next) => {
                     error: err.message })
             }
             if (!user) {
-                return res.status(401).send("El correo electrónico ya está en uso")
+                return res.status(401).send({
+                    message: "El correo electrónico ya está en uso",
+                    user: user                  
+                })
             }
-            return res.status(200).send("Registrado correctamente, ya puede logearse")
+            return res.status(200).send({
+                message: "Registrado correctamente",
+                user: user
+            })
         })(req, res, next)
 
     } catch (error) {

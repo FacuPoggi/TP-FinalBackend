@@ -57,7 +57,7 @@ export const addProductToCart = async (req, res) => {
 
         try {
             const realProduct = await findProductById(idProduct);
-
+            console.log(realProduct)
             if (realProduct) {
                 const cart = await findCartById(idCart);
                 const productIndex = cart.products.findIndex(product => product.productId.equals(idProduct));

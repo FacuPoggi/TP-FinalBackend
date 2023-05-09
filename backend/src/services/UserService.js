@@ -29,7 +29,6 @@ export const findUserByEmail = async (email) => {
 }
 
 export const createUser = async (user) => {
-    //Errores de datos a enviar a mi BDD
     try {
         const newUser = await userModel(user)
         await newUser.save()

@@ -4,7 +4,7 @@ import passport from "passport"
 export const passportError = (strategy) => {
     return async (req, res, next) => {
         passport.authenticate(strategy, (error, user, info) => {
-            if (error) { //Errores del Token (token no valido, no posee el formato adecuado o no existe, etc)
+            if (error) {
                 return next(error)
             }
 
@@ -20,15 +20,18 @@ export const passportError = (strategy) => {
 
 export const roleVerification = (roles) => {
     let bandera = 0
+
     return async (req, res, next) => {
-        const userAccess = req.user.user
-        if (!req.user) {
+        console.log(req.session.user)
+        const userAccess = req.session.user
+
+        if (!req.session.user) {
             return res.status(401).send({ error: "User no autorizado" })
         }
 
         console.log(userAccess)
         roles.forEach(rolEnviado => {
-            if (userAccess.rol != rolEnviado) { //El user no tiene el rol necesario a esta ruta y a este rol
+            if (userAccess.rol != rolEnviado) {
                 bandera = 1
             } else {
                 bandera = 0
