@@ -31,7 +31,7 @@ export const getProducts = async (req, res) => {
             nextLink: nextLink
         })
     } catch (error) {
-        res.status(500).send({error: error.message})
+        res.status(500).send({ error: error.message })
     }
 }
 
@@ -45,8 +45,8 @@ export const getProduct = async (req, res) => {
     } catch (error) {
         console.log()
         res.status(500).send({
-          message: "Error al buscar el producto",
-          error: error.message
+            message: "Error al buscar el producto",
+            error: error.message
         });
     }
 }
@@ -54,11 +54,11 @@ export const getProduct = async (req, res) => {
 export const addProducts = async (req, res) => {
     console.log(req.body)
     const info = req.body;
-    
+
     try {
         const products = await insertProducts(info);
         res.status(200).send({
-            message: 'Productos agregados correctamente', 
+            message: 'Productos agregados correctamente',
             products: products
         });
 

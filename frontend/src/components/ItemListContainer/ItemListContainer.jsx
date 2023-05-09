@@ -27,6 +27,7 @@ const ItemListContainer = () => {
 
     return (
         <div className="container mainContainer">
+            {message ? message : ""}
             {user && <div className="alert alert-primary" style={{ maxWidth: '500px', margin: '0 auto' }}>Bienvenido {user.first_name}</div>}
             <div className="row">
                 {products.map(product => (

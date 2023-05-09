@@ -71,15 +71,18 @@ export const ChatPage = () => {
     };
 
     return (
-        <div>
+        <div className='separacionNavbar'>
+            <h1 className='tituloChat'>Bienvenido (Nombre) al chat general!</h1>
             {alertMessage && <div className="alert alert-danger" style={{ maxWidth: '500px', margin: '2rem auto' }}>{alertMessage}</div>}
-            <div style={{ maxWidth: '500px', margin: '2rem auto' }}>
+            <div className='chatCentral'>
                 {messages.map((message) => (
                     <div key={message._id}>{message.user} ({message.email}): {message.message}</div>
                 ))}
             </div>
-            <input type="text" value={newMessage} onChange={(e) => setNewMessage(e.target.value)} />
-            <button onClick={sendMessage}>Enviar</button>
+            <div className='inputBotonChat'>
+                <input type="text" value={newMessage} onChange={(e) => setNewMessage(e.target.value)} />
+                <button onClick={sendMessage}>Enviar</button>
+            </div>
         </div>
     );
 };

@@ -24,7 +24,7 @@ export const Login = () => {
                 console.log(updateUser)
                 document.cookie = `loguedUser=${data.user.email};expires=${new Date(Date.now() + 1 * 24 * 60 * 60 * 1000).toUTCString()};path=/`;
                 console.log(document.cookie);
-
+                window.location.href = "/products"
             } catch (error) {
                 console.error(error);
             }
@@ -36,22 +36,24 @@ export const Login = () => {
 
     }
     return (
-        <div className="container divForm" >
-            <h3>Formulario de Inicio de Sesion</h3>
-            <form onSubmit={consultarForm} ref={datForm}>
+        <div className="container divForm " >
+            <div className="separacionNavbar">
+                <h3>Formulario de Inicio de Sesion</h3>
+                <form className="formularioLogin" onSubmit={consultarForm} ref={datForm}>
 
-                <div className="mb-3">
-                    <label htmlFor="email" className="form-label">Email</label>
-                    <input type="email" className="form-control" name="email" />
-                </div>
+                    <div className="mb-3">
+                        <label htmlFor="email" className="form-label">Email</label>
+                        <input type="email" className="form-control" name="email" />
+                    </div>
 
-                <div className="mb-3">
-                    <label htmlFor="password" className="form-label">Contraseña</label>
-                    <input type="password" className="form-control" name="password" />
-                </div>
+                    <div className="mb-3">
+                        <label htmlFor="password" className="form-label">Contraseña</label>
+                        <input type="password" className="form-control" name="password" />
+                    </div>
 
-                <button type="submit" className="btn btn-primary">Iniciar Sesion</button>
-            </form>
+                    <button type="submit" className="btn btn-primary">Iniciar Sesion</button>
+                </form>
+            </div>
         </div>
     )
 }
