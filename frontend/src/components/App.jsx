@@ -11,16 +11,17 @@ import ItemListContainer from './ItemListContainer/ItemListContainer';
 import { UserProvider } from '../context/userContext.js';
 import Navbar from './Navbar/NavBar';
 import Footer from './Footer/Footer';
-
+import PortadaPagina from './PortadaPagina/PortadaPagina';
 
 
 export const App = () => {
   return (
     <>
       <BrowserRouter>
-        <Navbar />
+        <Navbar/>
         <UserProvider>
           <Routes>
+            <Route path='/' element={<PortadaPagina />} />
 
             <Route path='/register' element={<Register />} />
             <Route path='/login' element={<Login />} />
@@ -28,7 +29,7 @@ export const App = () => {
             <Route path='/products' element={<ItemListContainer />} />
             <Route path='*' element={<h1>404 Not Found</h1>} />
           </Routes>
-          <Footer />
+          <Footer/>
         </UserProvider>
       </BrowserRouter>
 
