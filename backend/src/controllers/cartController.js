@@ -1,7 +1,9 @@
 import { findCartById, updateCart, createCart } from "../services/cartService.js";
 import { findProductById } from "../services/productService.js";
 import productModel from "../models/MongoDB/productModel.js";
-
+import { CustomError } from '../utils/errors/customErrors.js';
+import { ErrorEnum } from "../utils/errors/errorEnum.js";
+import { generateAddProductToCartErrorInfo } from "../utils/errors/errorInfo.js";
 
 export const getCart = async (req, res) => {
     if (req.session.login) {
@@ -19,7 +21,7 @@ export const getCart = async (req, res) => {
 
         } catch (error) {
             res.status(500).send({
-                message: "Hubo un error en el servidor", 
+                message: "Hubo un error en el servidor",
                 error: error.message
             })
         }
@@ -40,7 +42,7 @@ export const updateCartProducts = async (req, res) => {
 
         } catch (error) {
             res.status(500).send({
-                message: "Hubo un error en el servidor", 
+                message: "Hubo un error en el servidor",
                 error: error.message
             })
         }
@@ -50,34 +52,49 @@ export const updateCartProducts = async (req, res) => {
     }
 }
 
-export const addProductToCart = async (req, res) => {
+export const addProductToCart = async (req, res, next) => {
     if (req.session.login) {
         const idCart = req.session.user.idCart;
         const idProduct = req.params.pid;
-
+        const productoExiste = await findProductById(idProduct)
         try {
-            const realProduct = await findProductById(idProduct);
-            console.log(realProduct)
-            if (realProduct) {
-                const cart = await findCartById(idCart);
-                const productIndex = cart.products.findIndex(product => product.productId.equals(idProduct));
+            if (!productoExiste) {
+                throw CustomError.createError({ //Sin el throw funciona también
+                    name: "Add Product Error",
+                    message: "Missing Product",
+                    cause: generateAddProductToCartErrorInfo(idProduct),
+                    code: ErrorEnum.MISSING_FIELDS
+                });
+            } else {
+                try {
+                    const realProduct = await findProductById(idProduct);
+                    console.log(realProduct)
+                    if (realProduct) {
+                        const cart = await findCartById(idCart);
+                        console.log(cart)
+                        const productIndex = cart.products.findIndex(product => product.productId == idProduct);
+                        if (productIndex === -1) {
+                            cart.products.push({ productId: idProduct });
+                        } else {
+                            cart.products[productIndex].quantity += 1;
+                        }
+                        console.log(cart)
 
-                if (productIndex === -1) {
-                    cart.products.push({ productId: idProduct });
-                } else {
-                    cart.products[productIndex].quantity += 1;
+                        await cart.save();
+                        return res.status(200).send("Producto agregado al carrito")
+                    }
+
+                } catch (error) {
+                    res.status(500).send({
+                        message: "Hubo un error en el servidor",
+                        error: error.message
+                    })
                 }
-
-                await cart.save();
-                return res.status(200).send("Producto agregado al carrito")
             }
-
         } catch (error) {
-            res.status(500).send({
-                message: "Hubo un error en el servidor", 
-                error: error.message
-            })
+            next(error);
         }
+
 
     } else {
         return res.status(401).send("No existe sesion activa")
@@ -106,7 +123,7 @@ export const updateProductQuantity = async (req, res) => {
 
         } catch (error) {
             res.status(500).send({
-                message: "Hubo un error en el servidor", 
+                message: "Hubo un error en el servidor",
                 error: error.message
             })
         }
@@ -126,7 +143,7 @@ export const deleteAllProductsFromCart = async (req, res) => {
 
         } catch (error) {
             res.status(500).send({
-                message: "Hubo un error en el servidor", 
+                message: "Hubo un error en el servidor",
                 error: error.message
             })
         }
@@ -156,7 +173,7 @@ export const deleteOneProductFromCart = async (req, res) => {
 
         } catch (error) {
             res.status(500).send({
-                message: "Hubo un error en el servidor", 
+                message: "Hubo un error en el servidor",
                 error: error.message
             })
         }

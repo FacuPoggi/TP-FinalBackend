@@ -2,6 +2,9 @@ import { createUser, findUserByEmail } from "../services/UserService.js";
 import passport from "passport";
 import jwt from "jsonwebtoken";
 import { validatePassword, createHash } from "../utils/bcrypt.js";
+import { CustomError } from "../utils/errors/customErrors.js";
+import { ErrorEnum } from "../utils/errors/errorEnum.js";
+
 export const loginUser = async (req, res, next) => {
     try {
         passport.authenticate('login', (err, user) => {
@@ -10,10 +13,12 @@ export const loginUser = async (req, res, next) => {
                     message: "Ha ocurrido un error durante el login",
                     error: err.message
                 })
+
             }
             if (!user) {
+
                 return res.status(401).send({
-                    message:"Usuario o contraseña no validos",
+                    message: "Usuario o contraseña no validos",
                     user: user
                 })
             }
@@ -28,7 +33,7 @@ export const loginUser = async (req, res, next) => {
 
     } catch (error) {
         res.status(500).send({
-            message: "Hubo un error en el servidor", 
+            message: "Hubo un error en el servidor",
             error: error.message
         })
     }
@@ -87,14 +92,15 @@ export const registerUser = async (req, res, next) => {
     try {
         passport.authenticate('register', async (err, user) => {
             if (err) {
-                return res.status(401).send({ 
-                    message: "Ha ocurrido un error durante el registro", 
-                    error: err.message })
+                return res.status(401).send({
+                    message: "Ha ocurrido un error durante el registro",
+                    error: err.message
+                })
             }
             if (!user) {
                 return res.status(401).send({
                     message: "El correo electrónico ya está en uso",
-                    user: user                  
+                    user: user
                 })
             }
             return res.status(200).send({
@@ -105,7 +111,7 @@ export const registerUser = async (req, res, next) => {
 
     } catch (error) {
         res.status(500).send({
-            message: "Hubo un error en el servidor", 
+            message: "Hubo un error en el servidor",
             error: error.message
         })
     }
@@ -122,7 +128,7 @@ export const destroySession = async (req, res) => {
         }
     } catch (error) {
         res.status(500).send({
-            message: "Hubo un error en el servidor", 
+            message: "Hubo un error en el servidor",
             error: error.message
         })
     }
@@ -138,7 +144,7 @@ export const getSession = async (req, res) => {
         }
     } catch (error) {
         res.status(500).send({
-            message: "Hubo un error en el servidor", 
+            message: "Hubo un error en el servidor",
             error: error.message
         })
     }
