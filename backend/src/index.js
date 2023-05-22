@@ -11,7 +11,7 @@ import routerIndex from './routes/index.routes.js';
 import { Server } from "socket.io";
 import compression from 'express-compression'
 import errorHandler from './middleware/errors/errorHandler.js';
-import {CustomError} from './utils/errors/customErrors.js';
+import { addLogger } from './utils/logger.js';
 
 const whiteList = ['http://localhost:3000'] //Rutas validas a mi servidor
 //CORS (Me da problemas por eso comentado)
@@ -34,7 +34,7 @@ const app = express()
 //MIDDLEWARES
 app.use(cookieParser(process.env.SIGNED_COOKIE))
 app.use(express.json())
-app.use(cors(corsOptions)) //Deshabilito cors para poder usar postman
+//app.use(cors(corsOptions)) //Deshabilito cors para poder usar postman
 app.use(express.urlencoded({ extended: true }))
 app.use(session({
     store: MongoStore.create({
@@ -70,11 +70,13 @@ const connectionMongoose = async () => {
 connectionMongoose()
 
 app.use(cookieParser(process.env.JWT_SECRET))
-
-
-app.use("/", routerIndex)
 //Error Handler
 app.use(errorHandler)
+
+//Logger
+app.use(addLogger)
+
+app.use("/", routerIndex)
 
 const server = app.listen(4000, () => {
     console.log(`Server on port 4000`)

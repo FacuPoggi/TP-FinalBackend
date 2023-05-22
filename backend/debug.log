@@ -1,0 +1,13 @@
+[34minfo[39m: Metodo: GET en /logger/error - 17:36:55 
+[31merror[39m: Esto es un error, no se encuentra la descripción del producto
+[34minfo[39m: Metodo: GET en /logger/fatal - 17:37:15 
+[31mfatal[39m: Esto es un error FATAL, no existe el producto que desea
+[34minfo[39m: Metodo: GET en /logger/warning - 17:37:19 
+[33mwarning[39m: Esto es un WARNING, no se encontro el producto deseado
+[34minfo[39m: Metodo: GET en /logger/debug - 17:37:21 
+[34mdebug[39m: Esto es informacion del Debug, todo funciona correctamente
+[34minfo[39m: Metodo: GET en /logger/debug - 17:37:43 
+[34mdebug[39m: Esto es informacion del Debug, todo funciona correctamente
+[34minfo[39m: Metodo: GET en /logger/debug - 17:38:15 
+[34mdebug[39m: Esto es informacion del Debug, todo funciona correctamente
+[34minfo[39m: Metodo: GET en /mocking/mockingproducts - 17:38:36 
