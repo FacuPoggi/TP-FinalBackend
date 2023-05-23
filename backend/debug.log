@@ -11,3 +11,5 @@
 [34minfo[39m: Metodo: GET en /logger/debug - 17:38:15 
 [34mdebug[39m: Esto es informacion del Debug, todo funciona correctamente
 [34minfo[39m: Metodo: GET en /mocking/mockingproducts - 17:38:36 
+[34minfo[39m: Metodo: GET en /loggerTest/fatal - 13:59:21 
+[34minfo[39m: Metodo: GET en /loggerTest/fatal - 13:59:34 

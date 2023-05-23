@@ -70,13 +70,15 @@ const connectionMongoose = async () => {
 connectionMongoose()
 
 app.use(cookieParser(process.env.JWT_SECRET))
-//Error Handler
-app.use(errorHandler)
-
 //Logger
 app.use(addLogger)
+//Error Handler
+// app.use(errorHandler)
 
 app.use("/", routerIndex)
+
+
+
 
 const server = app.listen(4000, () => {
     console.log(`Server on port 4000`)
