@@ -12,6 +12,8 @@ import { UserProvider } from '../context/userContext.js';
 import Navbar from './Navbar/NavBar';
 import Footer from './Footer/Footer';
 import PortadaPagina from './PortadaPagina/PortadaPagina';
+import ResetPassword from './ResetPassword/ResetPassword';
+import SendEmailPasswordReset from './ResetPassword/SendEmailPasswordReset';
 
 
 export const App = () => {
@@ -28,6 +30,8 @@ export const App = () => {
             <Route path='/chat' element={<ChatPage />} />
             <Route path='/products' element={<ItemListContainer />} />
             <Route path='*' element={<h1>404 Not Found</h1>} />
+            <Route path='/password/sendEmail' element={<SendEmailPasswordReset/>}/>
+            <Route path='/password/reset' element={<ResetPassword/>}/>
           </Routes>
           <Footer/>
         </UserProvider>

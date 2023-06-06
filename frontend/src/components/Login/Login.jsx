@@ -1,5 +1,6 @@
 import { useContext, useRef } from "react"
 import UserContext from "../../context/userContext"
+import { Link } from 'react-router-dom'
 
 export const Login = () => {
     const { updateUser } = useContext(UserContext);
@@ -57,6 +58,7 @@ export const Login = () => {
                         <input type="password" className="form-control" name="password" />
                     </div>
                     <button type="submit" className="btn btn-primary">Iniciar Sesion</button>
+                    <Link className="btn btn-primary" to="/forgottenPassword">Olvidaste tu contraseña?</Link>
                 </form>
             </div>
         </div>

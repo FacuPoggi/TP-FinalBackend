@@ -4,11 +4,10 @@ import { roleVerification } from "../utils/errorMessages.js";
 
 const routerProduct = Router();
 
-routerProduct.get('/',roleVerification(["Admin"]),getProducts); //Comentar esta linea en caso de querer ver los productos en el frontend
-routerProduct.get('/:pid',roleVerification(["Admin"]), getProduct);
-routerProduct.post('/', addProducts);
-routerProduct.put('/:pid',roleVerification(["Admin"]), updateProduct);
-routerProduct.delete('/:pid',roleVerification(["Admin"]), deleteProduct); //Solo al admin se le permite realizar esto.
-
+routerProduct.get('/',getProducts); //Este se saca para poder ver los products por el front
+routerProduct.get('/:pid', getProduct);
+routerProduct.post('/',roleVerification(["Admin","Premium"]), addProducts);// Para esta entrega solamente el PREMIUM puede generar productos
+routerProduct.put('/:pid',roleVerification(["Admin","Premium"]), updateProduct);
+routerProduct.delete('/:pid',roleVerification(["Admin","Premium"]), deleteProduct); //Unicamente el admin puede hacer esto.
 
 export default routerProduct

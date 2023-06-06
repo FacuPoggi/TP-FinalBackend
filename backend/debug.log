@@ -13,3 +13,81 @@
 [34minfo[39m: Metodo: GET en /mocking/mockingproducts - 17:38:36 
 [34minfo[39m: Metodo: GET en /loggerTest/fatal - 13:59:21 
 [34minfo[39m: Metodo: GET en /loggerTest/fatal - 13:59:34 
+[34minfo[39m: Metodo: GET en / - 15:35:31 
+[34minfo[39m: Metodo: GET en /handlebars/ - 15:36:11 
+[34minfo[39m: Metodo: GET en /favicon.ico - 15:36:12 
+[34minfo[39m: Metodo: GET en /handlebars - 15:36:15 
+[34minfo[39m: Metodo: GET en /handlebars/login - 15:36:16 
+[34minfo[39m: Metodo: GET en /handlebars/register - 15:36:18 
+[34minfo[39m: Metodo: GET en /handlebars/login - 15:36:19 
+[34minfo[39m: Metodo: POST en /auth/login - 15:36:25 
+[34minfo[39m: Metodo: GET en /handlebars - 15:36:27 
+[34minfo[39m: Metodo: GET en /handlebars/register - 15:36:30 
+[34minfo[39m: Metodo: POST en /auth/register - 15:36:45 
+[34minfo[39m: New user created: {
+  first_name: 'Facundo',
+  last_name: 'Poggi',
+  email: 'F@F.com',
+  age: 23,
+  rol: 'Usuario',
+  password: '$2b$13$gJItpbWDmE7Qc.TaspzyBePu65SZSrvJmv/o3vuO6SRG/RDZbp43y',
+  idCart: new ObjectId("647f7cbdfa9dc6ee4a45cccb"),
+  resetToken: { token: '', createdAt: 2023-06-06T18:36:45.660Z },
+  _id: new ObjectId("647f7cbdfa9dc6ee4a45cccd"),
+  __v: 0
+}
+[34minfo[39m: Metodo: GET en /handlebars/login - 15:36:47 
+[34minfo[39m: Metodo: POST en /auth/login - 15:36:53 
+[34minfo[39m: Metodo: GET en /handlebars - 15:36:55 
+[34minfo[39m: Metodo: GET en /handlebars/register - 15:44:00 
+[34minfo[39m: Metodo: GET en /handlebars/emailForm - 15:44:06 
+[34minfo[39m: Metodo: GET en /handlebars/login - 15:44:09 
+[34minfo[39m: Metodo: GET en /handlebars/ - 15:44:14 
+[34minfo[39m: Metodo: OPTIONS en /socket/chat - 15:53:06 
+[34minfo[39m: Metodo: OPTIONS en /socket/chat - 15:53:06 
+[34minfo[39m: Metodo: OPTIONS en /api/product - 15:53:15 
+[34minfo[39m: Metodo: OPTIONS en /api/product - 15:53:15 
+[34minfo[39m: Metodo: OPTIONS en /api/product - 15:53:21 
+[34minfo[39m: Metodo: OPTIONS en /api/product - 15:53:21 
+[34minfo[39m: Metodo: GET en /api/products - 16:04:55 
+[34minfo[39m: Metodo: GET en /api/products/ - 16:05:14 
+[34minfo[39m: Metodo: GET en / - 16:05:37 
+[34minfo[39m: Metodo: GET en /handlebars/ - 16:05:42 
+[34minfo[39m: Metodo: GET en /handlebars/login - 16:05:44 
+[34minfo[39m: Metodo: POST en /auth/login - 16:06:41 
+[34minfo[39m: Metodo: GET en /handlebars - 16:06:43 
+[34minfo[39m: Metodo: GET en /handlebars/login - 16:06:54 
+[34minfo[39m: Metodo: GET en /handlebars/emailForm - 16:06:57 
+[34minfo[39m: Metodo: POST en /auth/password/createlink - 16:07:06 
+[34mdebug[39m: {
+  resetToken: { token: '', createdAt: 2023-06-06T18:36:45.660Z },
+  _id: new ObjectId("647f7cbdfa9dc6ee4a45cccd"),
+  first_name: 'Facundo',
+  last_name: 'Poggi',
+  email: 'F@F.com',
+  age: 23,
+  rol: 'Premium',
+  password: '$2b$13$gJItpbWDmE7Qc.TaspzyBePu65SZSrvJmv/o3vuO6SRG/RDZbp43y',
+  idCart: new ObjectId("647f7cbdfa9dc6ee4a45cccb"),
+  __v: 0
+}
+[34minfo[39m: Password reset link sent to F@F.com
+[34minfo[39m: Metodo: POST en /auth/password/createlink - 16:07:17 
+[34minfo[39m: Metodo: POST en /auth/password/createlink - 16:07:41 
+[34mdebug[39m: {
+  resetToken: { token: '', createdAt: 2023-06-06T19:07:41.043Z },
+  _id: new ObjectId("64233e1b632d8d6c0239304d"),
+  first_name: 'Facundo',
+  last_name: 'Poggi',
+  email: 'facundop23@gmail.com',
+  age: 22,
+  rol: 'User',
+  password: '$2b$13$dR1ef8JuepqZBWawbPg01.IEcr09/hKwdEBYIRw0Z7ZUhY.AUHRWO',
+  __v: 0
+}
+[34minfo[39m: Password reset link sent to facundop23@gmail.com
+[34minfo[39m: Metodo: GET en /handlebars/restorePassword - 16:07:55 
+[34minfo[39m: Metodo: POST en /auth/password/reset - 16:10:30 
+[34minfo[39m: Metodo: GET en /handlebars/login - 16:10:33 
+[34minfo[39m: Metodo: POST en /auth/login - 16:10:42 
+[34minfo[39m: Metodo: GET en /handlebars - 16:10:44 
