@@ -4,7 +4,8 @@ import chai from 'chai'
 import mongoose from 'mongoose'
 import userModel from '../src/models/MongoDB/userModel.js'
 
-await mongoose.connect("mongodb+srv://facundop23:coderhouse@cluster0.jrgdtix.mongodb.net/?retryWrites=true&w=majority")
+
+await mongoose.connect(process.env.URLMONGODB)
 
 const expect = chai.expect
 

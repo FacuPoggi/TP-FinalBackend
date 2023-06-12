@@ -4,10 +4,9 @@
 import mongoose from "mongoose";
 import userModel from "../src/models/MongoDB/userModel.js"
 import Assert, { strictEqual } from "assert"
-
 const assert = Assert.strict
 
-await mongoose.connect("mongodb+srv://facundop23:coderhouse@cluster0.jrgdtix.mongodb.net/?retryWrites=true&w=majority")
+await mongoose.connect(process.env.URLMONGODB)
 
 describe("Test de consulta a todos los usuarios", () => {
     // Previo a arrancar todos los test
