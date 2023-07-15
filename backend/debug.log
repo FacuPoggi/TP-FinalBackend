@@ -154,4 +154,14 @@
 [34minfo[39m: Metodo: GET en /apidocs/swagger-ui-bundle.js - 17:18:30 
 [34minfo[39m: Metodo: GET en /apidocs/favicon-32x32.png - 17:18:30 
 [34minfo[39m: Metodo: GET en /api/cart/ - 17:18:33 
-[31mfatal[39m: User not allowed
+[31mfatal[39m: User not allowed[34minfo[39m: Metodo: OPTIONS en /socket/chat - 15:41:30 
+[34minfo[39m: Metodo: OPTIONS en /socket/chat - 15:41:30 
+[34minfo[39m: Metodo: GET en /socket/chat - 15:41:58 
+[34minfo[39m: Metodo: GET en /socket/chat - 15:41:59 
+[34minfo[39m: Metodo: POST en /socket/chat - 15:42:05 
+[34minfo[39m: Metodo: GET en /api/product - 15:42:09 
+[34minfo[39m: Metodo: GET en /api/product - 15:42:09 
+[34minfo[39m: Metodo: GET en /socket/chat - 15:42:22 
+[34minfo[39m: Metodo: GET en /socket/chat - 15:42:22 
+[34minfo[39m: Metodo: GET en /api/product - 15:42:24 
+[34minfo[39m: Metodo: GET en /api/product - 15:42:24 
